@@ -16,7 +16,8 @@ export class CatalogoService {
   }
 
   getProductos(){
-    return this.firebase.list('catalogo')
+    this.productoList=this.firebase.list('catalogo');
+    return this.productoList;
   }
 
   insertProducto(producto: Catalogo){
