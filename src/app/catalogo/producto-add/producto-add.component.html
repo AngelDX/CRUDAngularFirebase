@@ -1,8 +1,8 @@
-<div class="card border-success mb-3">
+<div class="card border-primary mb-3">
     <div class="card-header"><h4>Agregar Producto</h4></div>
     <div class="card-body">
         <form #productosForm="ngForm" (ngSubmit)="onSubmit(productosForm)">
-            
+        <input type="hidden" name="key"  [(ngModel)]="catalogoService.selectProducto.key">
             <div class="form-group">
                 <label>Nombre Producto</label>
                 <input type="text" class="form-control" placeholder="Agregar producto"
@@ -10,17 +10,18 @@
             </div>
             <div class="form-group">
                 <label>Precio</label>
-                <input type="text" class="form-control" placeholder="Precio"
+                <input type="number" class="form-control" placeholder="Precio" 
                 name="precio" [(ngModel)]="catalogoService.selectProducto.precio">
             </div>
             <div class="form-group">
                 <label>Cantidd</label>
-                <input type="text" class="form-control" placeholder="Cantidad"
+                <input type="number" class="form-control" placeholder="Cantidad" 
                 name="cantidad" [(ngModel)]="catalogoService.selectProducto.cantidad">
             </div>
+
             <div class="form-group">
             <label>Categoria</label>
-            <select class="form-control" id="exampleSelect1"
+            <select class="form-select" id="exampleSelect1"
             name="categoria" [(ngModel)]="catalogoService.selectProducto.categoria">
                 <option value="TECLADO">TECLADOS</option>
                 <option value="MOUSES">MOUSES</option>
@@ -29,10 +30,9 @@
                 <option value="VARIOS">VARIOS</option>
             </select>
             </div>
-            <div class="form-group">
-                <input type="submit" class="form-control btn btn-primary">
-            </div>
-                
+            <div class="form-group mt-3">
+                <input type="submit" class="form-control btn btn-primary" value="Enviar">
+            </div> 
           </form>
     </div>
   </div>
