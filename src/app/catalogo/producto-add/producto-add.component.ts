@@ -16,8 +16,21 @@ export class ProductoAddComponent implements OnInit {
   }
 
   onSubmit(productosForm: NgForm){
-    
-    this.catalogoService.insertProducto(productosForm.value);
-    console.log(productosForm.value);
+    if(productosForm.value.key==null){
+      this.catalogoService.insertProducto(productosForm.value);
+    }else{
+      this.catalogoService.updateproducto(productosForm.value.key, productosForm.value)
+    }
+    this.resetForm(productosForm);
+    //onsole.log(productosForm.value);
+  }
+
+  resetForm(productosForm: NgForm){
+    if(productosForm != null){
+      productosForm.reset();
+      productosForm.value.key=null;
+      this.catalogoService.selectProducto=new Catalogo();
+      this.catalogoService.selectProducto.key=null;
+    }
   }
 }

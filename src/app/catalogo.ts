@@ -1,5 +1,5 @@
 export class Catalogo {
-    $key:string="";
+    key?:string | null;
     nombre:string="";
     categoria:string="";
     precio:number=0;

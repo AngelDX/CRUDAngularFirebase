@@ -1,29 +1,32 @@
-<div class="card border-success mb-3">
+<div class="card border-primary mb-3">
     <div class="card-header"><h4>Lista de Productos</h4></div>
     <div class="card-body">
-        <table class="row-border hover">
+    <a class="btn btn-primary text-white " (click)="onAdd()">
+      <i class="fas fa-user-plus"></i> Agregar
+      </a>
+        <table class="table table-striped table-hover">
             <thead>
               <tr>
+                <th>KEY</th>
                 <th>NOMBRE</th>
                 <th>CATEGORIA</th>
                 <th>PRECIO</th>
-                <th>CANTIDAD</th>
-                <th></th>
+                <th>CANTIDAD</th>                
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of catalogoList">
-                <td>{{item.$key}}</td>
-                <td>{{item.nombre}}</td>
-                <td>{{item.categoria}}</td>
-                <td>{{item.precio}}</td>
+              <tr *ngFor="let item of catalogoList; index as i">
+                <td>{{ i+1 }}</td>
+                <td>{{item.nombre | uppercase}}</td>
+                <td>{{item.categoria | lowercase}}</td>
+                <td>{{item.precio | currency:'symbol':'S/. '}}</td>
                 <td>{{item.cantidad}}</td>
                 <td>
                     <a class="btn btn-success" (click)="onEdit(item)"><i class="fa fa-edit" aria-hidden="true"></i></a>
                 </td>
                 <td>
-                    <a class="btn btn-danger" (click)="onDelete(item.$key)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a class="btn btn-danger" (click)="onDelete(item.key)"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
               </tr>
               
